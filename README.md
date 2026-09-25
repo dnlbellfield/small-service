@@ -14,11 +14,11 @@ A deliberately small, static lead-generation website for a fictional Ventura Cou
 
 ## Deploy and configure
 
-1. Create a new Netlify site from this directory. Netlify detects `data-netlify="true"` at build time; deploy before testing the form.
+1. On the existing Netlify site, deploy this repository using `npm run build` and publish `dist/` (both are configured in `netlify.toml`). Netlify detects the static form in `dist/index.html` during deployment. Do not upload the source folder in place of the build output.
 2. In Netlify, set the variables listed in `.env.example`. Do not upload or commit an `.env` file. Verify `BUSINESS_EMAIL` as a Brevo sender/domain first.
-3. In Netlify Forms, confirm the `quote-request` form appears. Turn on spam filtering as appropriate.
+3. In Netlify Forms, confirm the `quote-request` form appears. On the deployed page, Netlify should have removed `data-netlify="true"` during processing and added/retained the hidden `form-name` field. If the attribute remains in deployed HTML, check the site's build command, publish directory, and form detection setting, then redeploy. Turn on spam filtering as appropriate.
 4. Add a Netlify Forms outbound webhook pointing to `https://YOUR-SITE.netlify.app/.netlify/functions/brevo-form-webhook?token=FORM_WEBHOOK_TOKEN_VALUE`. If the Netlify UI supports custom headers, prefer `x-email-clarity-webhook-token` instead of placing the secret in the URL. Confirm the precise capability in the UI before enabling it; if it cannot protect the endpoint, use a small gateway (for example Make/Pipedream with a secret) or a dedicated signed webhook endpoint. Never expose the secret in the page.
-5. Submit a real test inquiry. Verify it appears in Netlify Forms before checking the confirmation and owner emails.
+5. Submit a real test inquiry on the existing netlify.app URL. Verify it appears in Netlify Forms before treating the success page or any email as proof of delivery.
 
 Netlify Forms is the system of record. A Brevo outage returns an error to the webhook but does not remove the stored submission. The owner can follow up from Netlify Forms. For production-grade retry and strict deduplication, route the outbound webhook through a small durable queue/database with a submission-ID unique key, then call Brevo; this static starter intentionally does not pretend a serverless function has durable idempotency storage. Configure webhook retries only where the source supports them, and review failure alerts.
 
