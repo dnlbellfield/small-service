@@ -15,14 +15,31 @@
       started = true;
       window.dataLayer?.push({ event: 'quote_form_start' });
     });
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
       const error = form.querySelector('.form-error');
       if (!form.checkValidity()) {
-        event.preventDefault();
         error.textContent = 'Please complete the required fields with valid information.';
         form.querySelector(':invalid')?.focus();
-      } else {
-        error.textContent = '';
+        return;
+      }
+      error.textContent = '';
+      const submit = form.querySelector('[type="submit"]');
+      submit.disabled = true;
+      try {
+        const data = new FormData(form);
+        data.set('form-name', form.getAttribute('name'));
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString(),
+        });
+        if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
+        try { sessionStorage.setItem('quote-request-accepted', '1'); } catch { /* Storage may be unavailable. */ }
+        window.location.assign(form.action);
+      } catch {
+        error.textContent = 'Your request could not be sent. Please try again.';
+        submit.disabled = false;
       }
     });
   }
