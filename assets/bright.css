@@ -1,0 +1,51 @@
+:root{--ink:#25364a;--muted:#596c7e;--cream:#fff;--sand:#eff8ff;--sea:#176bc1;--line:#dce7ef;font-family:"Avenir Next",Avenir,"Segoe UI",sans-serif}
+body{background:#fff}
+h1,h2,h3,.brand{font-family:inherit;font-weight:750}
+h1{font-size:clamp(2.7rem,4.2vw,4.1rem);line-height:1.08;letter-spacing:-.055em}
+h1 em{font-weight:inherit}
+h2{font-size:clamp(2rem,3vw,2.8rem);line-height:1.16}
+.site-header{min-height:80px;background:rgb(255 255 255 / .96);border-color:#e9eff5}
+.brand{font-size:1.3rem;letter-spacing:-.035em}
+.brand i{font-size:.65rem;font-weight:650;letter-spacing:.04em;margin-top:5px}
+.brand-mark{width:40px;height:40px;border-radius:13px;background:#e6f3ff;color:var(--sea)}
+.button{border-radius:9px;box-shadow:none}
+.button:hover,.button:focus{background:#10569f}
+.hero{max-width:1280px;margin:20px auto 0;padding:34px 44px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:54px;border-radius:26px;background:#eff8ff;align-items:center}
+.hero-copy .eyebrow{font-size:.68rem;letter-spacing:.045em;margin-bottom:18px}
+.dot{background:#288367}
+.lead{font-size:1.04rem;line-height:1.65;margin-bottom:14px}
+.hero-note{font-size:.82rem;line-height:1.6;margin:0 0 14px}
+.hero-photo{display:block;width:100%;height:155px;object-fit:cover;object-position:center 53%;border-radius:16px;margin-top:22px}
+.hero-form{padding:28px;border:1px solid #e1edf7;border-radius:20px;box-shadow:0 12px 36px rgb(54 103 145 / .07);background:#fff}
+.hero-form .eyebrow{font-size:.65rem;margin-bottom:6px;letter-spacing:.08em}
+.hero-form h2{font-size:1.7rem;margin-bottom:22px}
+.hero-form form{gap:15px 12px}
+.hero-form label{font-size:.78rem}
+input,select,textarea{border-color:#cbd9e6;border-radius:7px;background:#fcfdff;font-size:.92rem}
+.hero-form input,.hero-form select{height:44px;padding:10px}
+.hero-form .check input{height:16px;width:16px;flex:0 0 16px;accent-color:var(--sea)}
+.hero-form .fine{text-align:center;font-size:.73rem}
+.form-error:empty{display:none}
+.section-intro{display:block;text-align:center;max-width:660px;margin:auto}
+.section-intro p:last-child{max-width:none;margin:16px 0 0}
+.cards{gap:22px}
+.cards article{border-radius:18px;padding:30px;min-height:290px;background:#f1f8fd;border:none}
+.cards article:nth-child(2){background:#eef8f2}
+.cards article:nth-child(3){background:#fff7e9}
+.card-number{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#fff;color:var(--sea)!important;margin-bottom:24px}
+.card-link{padding-top:15px;color:var(--sea)}
+.soft{background:#f6faff;padding-left:max(24px,calc((100% - 1120px)/2));padding-right:max(24px,calc((100% - 1120px)/2))}
+.steps b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#e3effc;color:var(--sea);font-size:.8rem;margin-bottom:18px}
+#about{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.about-photo{width:100%;aspect-ratio:1.15;object-fit:cover;border-radius:24px}
+#faq>.eyebrow,#faq>h2{text-align:center}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:12px}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.quote{background:#edf7ff;padding-left:max(24px,calc((100% - 1120px)/2));padding-right:max(24px,calc((100% - 1120px)/2))}
+.contact-card{width:100%}
+.contact-card a{font-family:inherit;border-color:#cbddea}
+footer{border:none}
+:focus-visible{outline:3px solid #79b9f2;outline-offset:4px}
+@media(max-width:1000px){.hero{margin:16px;padding:30px;gap:28px}.site-header{padding-left:24px;padding-right:24px}nav{gap:16px}}
+@media(max-width:720px){.site-header{min-height:70px;padding:12px 18px}.brand{font-size:1.05rem}.brand-mark{width:30px;height:30px}.small{padding:11px;font-size:.7rem}.hero{grid-template-columns:1fr;padding:28px 18px 18px;margin:12px;gap:26px;border-radius:20px}.hero-copy{padding:0 4px}h1{font-size:clamp(2.5rem,9vw,3.6rem)}.hero-photo{height:140px}.hero-note{display:none}.hero-form{max-width:none;padding:22px 18px;border-radius:15px}.hero-form form,.form-more-fields{grid-template-columns:1fr}#about{grid-template-columns:1fr;gap:30px}.about-photo{aspect-ratio:1.4}.quote{grid-template-columns:1fr}footer{gap:20px;font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
