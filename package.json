@@ -1,0 +1,1 @@
+{"name":"email-clarity-v1-demo","private":true,"type":"module","scripts":{"check":"node --check assets/site.js && node --check netlify/functions/brevo-form-webhook.js"}}
